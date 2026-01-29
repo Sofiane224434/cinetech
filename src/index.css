@@ -1,1 +1,96 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Council';
+  src: url('./assets/fonts/Council Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ringold';
+  src: url('./assets/fonts/Ringold-Clarendon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-display: 'Council', sans-serif;
+  --font-serif: 'Ringold', serif;
+}
+
+body {
+  background-color: #f5f5f0;
+  color: #1a1a1a;
+  font-family: 'Ringold', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Council', sans-serif;
+}
+
+/* Style pour la bordure ornementale */
+.vintage-frame {
+  position: relative;
+  /* Espace pour les bordures */
+  padding: 30px 60px;
+  z-index: 10;
+}
+
+/* Bordures latérales (gauche et droite) */
+.vintage-frame::before,
+.vintage-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background-image: url('/src/assets/border.svg');
+  background-repeat: repeat-y;
+  background-size: 70% auto;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vintage-frame::before {
+  left: 0;
+}
+
+.vintage-frame::after {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+/* Bordures horizontales (haut et bas) */
+.vintage-frame-top,
+.vintage-frame-bottom {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  height: 30px;
+  background-image: url('/src/assets/border2.png');
+  background-repeat: repeat-x;
+  background-size: auto 20%;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vintage-frame-top {
+  top: 0;
+}
+
+.vintage-frame-bottom {
+  bottom: 0;
+  transform: scaleY(-1);
+}
+
+/* Séparateur horizontal avec border2 */
+.border2-separator {
+  background-image: url('/src/assets/border2.png');
+  background-repeat: repeat-x;
+  background-size: auto 60%;
+  background-position: center;
+  opacity: 0.5;
+}
