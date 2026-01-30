@@ -1,0 +1,23 @@
+# ============================================
+# Configuration à ajouter au Caddyfile
+# ============================================
+# Fichier: /home/debian/apps/azim-main/Caddyfile
+
+# Ajoutez ces lignes APRÈS les autres configurations
+
+# Redirect HTTP to HTTPS pour moviedb
+http://moviedb.azim404.com {
+ redir https://moviedb.azim404.com{uri} permanent
+}
+
+# HTTPS configuration avec headers de sécurité
+moviedb.azim404.com {
+ reverse_proxy cinetech:80
+
+ header {
+  Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  X-Content-Type-Options "nosniff"
+  X-Frame-Options "DENY"
+  X-XSS-Protection "1; mode=block"
+ }
+}

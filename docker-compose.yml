@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  cinetech:
+    build: .
+    container_name: cinetech
+    restart: unless-stopped
+    networks:
+      - azim-main_web
+
+networks:
+  azim-main_web:
+    external: true

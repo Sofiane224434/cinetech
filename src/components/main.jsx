@@ -1,3 +1,5 @@
+import MovieGrid from './MovieGrid';
+
 function Main() {
     return (
         <main className="flex-1 p-12 w-10/12 bg-white">
@@ -12,21 +14,23 @@ function Main() {
                             <div className="h-1 w-32 bg-gray-400 mx-auto"></div>
                         </header>
                         
-                        <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-justify">
+                        <div className="max-w-4xl mx-auto space-y-6 text-lg leading-relaxed text-justify mb-16">
                             <p className="first-letter:text-5xl first-letter:font-display first-letter:mr-3 first-letter:float-left first-letter:text-gray-400">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Découvrez les films les plus populaires du moment. Notre collection est mise à jour quotidiennement pour vous offrir le meilleur du cinéma mondial.
                             </p>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>Explorez des milliers de films, séries et documentaires. Consultez les notes, lisez les critiques et trouvez votre prochaine obsession cinématographique.</p>
                         </div>
+
+                        <MovieGrid title="Films Populaires" />
 
                         <div className="my-16 grid grid-cols-2 gap-8">
                             <section className="border-2 border-gray-800 p-6 bg-black">
                                 <h2 className="text-4xl font-display uppercase text-gray-400 mb-4 border-b border-gray-700 pb-2">Archives</h2>
-                                <p className="text-sm text-gray-400">Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor.</p>
+                                <p className="text-sm text-gray-400">Plongez dans notre vaste collection de classiques du cinéma et redécouvrez les chefs-d'œuvre intemporels.</p>
                             </section>
                             <section className="border-2 border-gray-300 p-6 bg-white">
                                 <h2 className="text-4xl font-display uppercase text-gray-600 mb-4 border-b border-gray-300 pb-2">Collection</h2>
-                                <p className="text-sm text-gray-600">Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel.</p>
+                                <p className="text-sm text-gray-600">Créez vos propres listes personnalisées et partagez vos découvertes avec la communauté.</p>
                             </section>
                         </div>
                     </div>

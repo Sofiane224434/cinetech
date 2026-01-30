@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 function Footer() {
     return (
         <footer className="bg-white mt-auto">
             <div className="h-6 mx-auto border2-separator"></div>
             <div className="max-w-7xl mx-auto px-6 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* MovieDB Section */}
                     <div>
                         <div className="flex items-center gap-2 mb-6">
@@ -20,32 +22,28 @@ function Footer() {
                     <div>
                         <h4 className="font-display uppercase tracking-widest text-gray-700 mb-6 text-sm border-b border-gray-300 pb-2 inline-block">Navigation</h4>
                         <ul className="space-y-3 text-sm text-gray-600 font-serif">
-                            <li><a href="#films" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Films</a></li>
-                            <li><a href="#series" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Séries</a></li>
-                            <li><a href="#genres" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Genres</a></li>
-                            <li><a href="#top-rated" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Top Rated</a></li>
+                            <li><Link to="/movies" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Films</Link></li>
+                            <li><Link to="/series" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Séries</Link></li>
+                            <li><Link to="/anime" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Anime</Link></li>
+                            <li><Link to="/favorites" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Favoris</Link></li>
                         </ul>
                     </div>
 
-                    {/* Communauté Section */}
+                    {/* Ma Collection */}
                     <div>
-                        <h4 className="font-display uppercase tracking-widest text-gray-700 mb-6 text-sm border-b border-gray-300 pb-2 inline-block">Communauté</h4>
+                        <h4 className="font-display uppercase tracking-widest text-gray-700 mb-6 text-sm border-b border-gray-300 pb-2 inline-block">Ma Collection</h4>
                         <ul className="space-y-3 text-sm text-gray-600 font-serif">
-                            <li><a href="#forums" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Forums</a></li>
-                            <li><a href="#critiques" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Critiques</a></li>
-                            <li><a href="#listes" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Listes</a></li>
-                            <li><a href="#evenements" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Événements</a></li>
+                            <li><Link to="/watchlist" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Watchlist</Link></li>
+                            <li><Link to="/favorites" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Favoris</Link></li>
                         </ul>
                     </div>
 
-                    {/* Support Section */}
+                    {/* Ressources */}
                     <div>
-                        <h4 className="font-display uppercase tracking-widest text-gray-700 mb-6 text-sm border-b border-gray-300 pb-2 inline-block">Support</h4>
+                        <h4 className="font-display uppercase tracking-widest text-gray-700 mb-6 text-sm border-b border-gray-300 pb-2 inline-block">Ressources</h4>
                         <ul className="space-y-3 text-sm text-gray-600 font-serif">
-                            <li><a href="#aide" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Aide</a></li>
-                            <li><a href="#contact" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Contact</a></li>
-                            <li><a href="#api" className="hover:text-gray-900 uppercase tracking-wider transition-colors">API</a></li>
-                            <li><a href="#conditions" className="hover:text-gray-900 uppercase tracking-wider transition-colors">Conditions</a></li>
+                            <li><a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 uppercase tracking-wider transition-colors">TMDB</a></li>
+                            <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 uppercase tracking-wider transition-colors">GitHub</a></li>
                         </ul>
                     </div>
                 </div>

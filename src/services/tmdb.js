@@ -1,0 +1,75 @@
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
+
+export const tmdbService = {
+  // Films
+  getPopularMovies: async (page = 1) => {
+    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=fr-FR&page=${page}`);
+    return response.json();
+  },
+
+  getTrendingMovies: async (timeWindow = 'week') => {
+    const response = await fetch(`${BASE_URL}/trending/movie/${timeWindow}?api_key=${API_KEY}&language=fr-FR`);
+    return response.json();
+  },
+
+  getMovieDetails: async (movieId) => {
+    const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=fr-FR&append_to_response=credits,similar,reviews`);
+    return response.json();
+  },
+
+  searchMovies: async (query, page = 1) => {
+    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}&page=${page}`);
+    return response.json();
+  },
+
+  // Séries
+  getPopularSeries: async (page = 1) => {
+    const response = await fetch(`${BASE_URL}/tv/popular?api_key=${API_KEY}&language=fr-FR&page=${page}`);
+    return response.json();
+  },
+
+  getTrendingSeries: async (timeWindow = 'week') => {
+    const response = await fetch(`${BASE_URL}/trending/tv/${timeWindow}?api_key=${API_KEY}&language=fr-FR`);
+    return response.json();
+  },
+
+  getSeriesDetails: async (seriesId) => {
+    const response = await fetch(`${BASE_URL}/tv/${seriesId}?api_key=${API_KEY}&language=fr-FR&append_to_response=credits,similar,reviews`);
+    return response.json();
+  },
+
+  searchSeries: async (query, page = 1) => {
+    const response = await fetch(`${BASE_URL}/search/tv?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}&page=${page}`);
+    return response.json();
+  },
+
+  // Recherche multi (films + séries)
+  searchMulti: async (query) => {
+    const response = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&language=fr-FR&query=${encodeURIComponent(query)}`);
+    return response.json();
+  },
+
+  // Anime (films et séries d'animation japonaise)
+  getAnime: async (page = 1) => {
+    // Genre 16 = Animation, pays JP = Japon
+    const response = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&language=fr-FR&with_genres=16&with_origin_country=JP&sort_by=popularity.desc&page=${page}`);
+    return response.json();
+  },
+
+  // Vidéos/Trailers
+  getMovieVideos: async (movieId) => {
+    const response = await fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`);
+    return response.json();
+  },
+
+  getSeriesVideos: async (seriesId) => {
+    const response = await fetch(`${BASE_URL}/tv/${seriesId}/videos?api_key=${API_KEY}`);
+    return response.json();
+  },
+
+  getImageUrl: (path, size = 'w500') => {
+    return path ? `${IMAGE_BASE_URL}/${size}${path}` : null;
+  }
+};
