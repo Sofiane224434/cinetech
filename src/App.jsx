@@ -7,6 +7,7 @@ import Series from './pages/Series';
 import Anime from './pages/Anime';
 import MovieDetail from './pages/MovieDetail';
 import SeriesDetail from './pages/SeriesDetail';
+import PersonDetail from './pages/PersonDetail';
 import Favorites from './pages/Favorites';
 import Watchlist from './pages/Watchlist';
 
@@ -23,6 +24,7 @@ function App() {
                             <Route path="/anime" element={<Anime />} />
                             <Route path="/movie/:id" element={<MovieDetail />} />
                             <Route path="/series/:id" element={<SeriesDetail />} />
+                            <Route path="/person/:id" element={<PersonDetail />} />
                             <Route path="/favorites" element={<Favorites />} />
                             <Route path="/watchlist" element={<Watchlist />} />
                         </Routes>

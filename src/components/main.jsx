@@ -9,7 +9,7 @@ function Main() {
                         <header className="mb-12 text-center">
                             <h5 className="text-sm tracking-[0.5em] uppercase text-gray-600 mb-2">Welcome to</h5>
                             <h1 className="text-8xl font-display uppercase tracking-wider text-gray-500 mb-6 drop-shadow-xl">
-                                <span className="text-9xl">M</span>ovie<span className="text-9xl">D</span><span className="text-9xl">B</span>
+                                <span className="text-9xl">Mm</span>ovie<span className="text-9xl">D</span><span className="text-9xl">B</span>
                             </h1>
                             <div className="h-1 w-32 bg-gray-400 mx-auto"></div>
                         </header>

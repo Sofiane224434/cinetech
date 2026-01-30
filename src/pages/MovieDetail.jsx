@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import MediaCard from '../components/MediaCard';
 import { tmdbService } from '../services/tmdb';
 import { useFavorites, useComments, useRatings, useWatchlist } from '../hooks/useLocalStorage';
@@ -121,73 +121,129 @@ function MovieDetail() {
                 >
                     <span>←</span> Retour
                 </button>
-                <div className="grid md:grid-cols-3 gap-12 mb-16">
+                
+                <div className="grid md:grid-cols-2 gap-12 mb-16">
+                    {/* COLONNE GAUCHE */}
                     <div>
                         {posterUrl && (
-                            <img src={posterUrl} alt={movie.title} className="w-full border-4 border-gray-800" />
+                            <img src={posterUrl} alt={movie.title} className="w-full border-4 border-gray-800 mb-6" />
                         )}
                         
-                        {/* Note personnelle verticale */}
-                        <div className="mt-4 bg-gray-800 border-2 border-gray-900 p-4 text-center">
-                            <p className="text-xs font-display uppercase tracking-wider text-gray-400 mb-2">Ma Note</p>
-                            <div className="text-6xl font-display text-yellow-500 mb-2">
-                                {userRating > 0 ? userRating : '-'}
-                                <span className="text-3xl text-gray-600">/5</span>
-                            </div>
-                            <div className="flex justify-center gap-1 mb-4">
-                                {[1, 2, 3, 4, 5].map((star) => (
+                        <div className="grid grid-cols-2 gap-4 mb-6">
+                            {/* Note personnelle */}
+                            <div className="bg-gray-800 border-2 border-gray-900 p-4 text-center">
+                                <p className="text-xs font-display uppercase tracking-wider text-gray-400 mb-2">Ma Note</p>
+                                <div className="text-4xl font-display text-yellow-500 mb-2">
+                                    {userRating > 0 ? userRating : '-'}
+                                    <span className="text-2xl text-gray-600">/5</span>
+                                </div>
+                                <div className="flex justify-center gap-1 mb-2">
+                                    {[1, 2, 3, 4, 5].map((star) => (
+                                        <button
+                                            key={star}
+                                            onClick={() => handleRating(star)}
+                                            className={`text-xl transition-colors ${
+                                                star <= userRating ? 'text-yellow-500' : 'text-gray-600 hover:text-yellow-400'
+                                            }`}
+                                        >
+                                            ★
+                                        </button>
+                                    ))}
+                                </div>
+                                {userRating > 0 && (
                                     <button
-                                        key={star}
-                                        onClick={() => handleRating(star)}
-                                        className={`text-2xl transition-colors ${
-                                            star <= userRating ? 'text-yellow-500' : 'text-gray-600 hover:text-yellow-400'
-                                        }`}
+                                        onClick={() => handleRating(0)}
+                                        className="text-xs text-gray-500 hover:text-gray-300 font-serif"
                                     >
-                                        ★
+                                        Effacer
                                     </button>
-                                ))}
+                                )}
                             </div>
-                            {userRating > 0 && (
-                                <button
-                                    onClick={() => handleRating(0)}
-                                    className="text-xs text-gray-500 hover:text-gray-300 font-serif"
-                                >
-                                    Effacer ma note
-                                </button>
-                            )}
+                            
+                            {/* Note TMDB */}
+                            <div className="bg-yellow-500 border-4 border-gray-800 p-4 text-center">
+                                <p className="text-xs font-display uppercase tracking-wider text-gray-800 mb-2">Note TMDB</p>
+                                <div className="text-5xl font-display text-gray-900 leading-none">
+                                    {movie.vote_average.toFixed(1)}
+                                </div>
+                                <div className="text-2xl font-display text-gray-700 mt-1">/10</div>
+                                <p className="text-xs font-serif text-gray-700 mt-2">{movie.vote_count.toLocaleString()}</p>
+                            </div>
                         </div>
                         
                         <button
                             onClick={handleFavoriteToggle}
-                            className="w-full mt-4 px-6 py-3 font-display uppercase tracking-wider bg-black text-gray-400 hover:text-white transition-colors border-2 border-gray-800"
+                            className="w-full mb-2 px-6 py-3 font-display uppercase tracking-wider bg-black text-gray-400 hover:text-white transition-colors border-2 border-gray-800"
                         >
                             {isFav ? '★ Retirer des favoris' : '☆ Ajouter aux favoris'}
                         </button>
                         
                         <button
                             onClick={handleWatchlistToggle}
-                            className="w-full mt-2 px-6 py-3 font-display uppercase tracking-wider bg-gray-700 text-gray-400 hover:text-white transition-colors border-2 border-gray-800"
+                            className="w-full mb-6 px-6 py-3 font-display uppercase tracking-wider bg-gray-700 text-gray-400 hover:text-white transition-colors border-2 border-gray-800"
                         >
                             {isInWatch ? '✓ Dans ma watchlist' : '+ Ajouter à ma watchlist'}
                         </button>
                         
-                        {/* Note IMDB verticale */}
-                        <div className="mt-4 bg-yellow-500 border-4 border-gray-800 p-6 text-center flex flex-col justify-center" style={{ minHeight: '240px' }}>
-                            <p className="text-xs font-display uppercase tracking-wider text-gray-800 mb-2">Note IMDB</p>
-                            <div className="flex-1 flex flex-col justify-center">
-                                <div className="text-8xl font-display text-gray-900 leading-none">
-                                    {movie.vote_average.toFixed(1)}
+                        {/* Infos supplémentaires */}
+                        <div className="bg-white border-2 border-gray-400 p-6">
+                            <h3 className="font-display text-xl uppercase tracking-wider text-gray-600 mb-4">Informations</h3>
+                            
+                            <div className="space-y-3">
+                                <div>
+                                    <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Statut</p>
+                                    <p className="font-serif text-sm text-gray-700">{movie.status === 'Released' ? 'Sorti' : movie.status}</p>
                                 </div>
-                                <div className="text-3xl font-display text-gray-700 mt-2">/10</div>
+                                
+                                <div>
+                                    <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Langue Originale</p>
+                                    <p className="font-serif text-sm text-gray-700">{movie.original_language.toUpperCase()}</p>
+                                </div>
+                                
+                                {movie.spoken_languages && movie.spoken_languages.length > 0 && (
+                                    <div>
+                                        <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Langues Parlées</p>
+                                        <p className="font-serif text-sm text-gray-700">
+                                            {movie.spoken_languages.map(l => l.name).join(', ')}
+                                        </p>
+                                    </div>
+                                )}
+                                
+                                {movie.production_countries && movie.production_countries.length > 0 && (
+                                    <div>
+                                        <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Pays de Production</p>
+                                        <p className="font-serif text-sm text-gray-700">
+                                            {movie.production_countries.map(c => c.name).join(', ')}
+                                        </p>
+                                    </div>
+                                )}
+                                
+                                {movie.budget > 0 && (
+                                    <div>
+                                        <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Budget</p>
+                                        <p className="font-serif text-sm text-gray-700">{movie.budget.toLocaleString('fr-FR')} $</p>
+                                    </div>
+                                )}
                             </div>
-                            <p className="text-xs font-serif text-gray-700 mt-4">{movie.vote_count.toLocaleString()} votes</p>
                         </div>
                     </div>
 
-                    <div className="md:col-span-2">
-                        <h1 className="text-6xl font-display uppercase tracking-wider text-gray-600 mb-4">
+                    {/* COLONNE DROITE */}
+                    <div>
+                        <h1 className="text-5xl font-display uppercase tracking-wider text-gray-600 mb-4">
                             {movie.title}
                         </h1>
+                        
+                        <div className="flex items-center gap-4 mb-6 font-serif text-gray-600">
+                            <span>{new Date(movie.release_date).getFullYear()}</span>
+                            <span>•</span>
+                            <span>{movie.runtime} min</span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1">
+                                <span className="text-yellow-600">★</span>
+                                {movie.vote_average.toFixed(1)}
+                            </span>
+                        </div>
                         
                         {trailer && (
                             <div className="mb-6">
@@ -204,48 +260,86 @@ function MovieDetail() {
                                 </div>
                             </div>
                         )}
-                        <div className="flex items-center gap-4 mb-6 font-serif text-gray-600">
-                            <span>{new Date(movie.release_date).getFullYear()}</span>
-                            <span>•</span>
-                            <span>{movie.runtime} min</span>
-                        </div>
 
-                        <p className="text-lg font-serif text-gray-700 mb-8 leading-relaxed">
+                        <p className="text-lg font-serif text-gray-700 mb-6 leading-relaxed">
                             {movie.overview}
                         </p>
 
-                        <div className="grid grid-cols-2 gap-6 mb-8">
-                            <div>
-                                <h3 className="font-display text-xl uppercase tracking-wider text-gray-600 mb-2">Genres</h3>
-                                <p className="font-serif text-gray-600">
-                                    {movie.genres.map(g => g.name).join(', ')}
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="font-display text-xl uppercase tracking-wider text-gray-600 mb-2">Pays</h3>
-                                <p className="font-serif text-gray-600">
-                                    {movie.production_countries.map(c => c.name).join(', ')}
-                                </p>
+                        <div className="mb-6">
+                            <h3 className="font-display text-xl uppercase tracking-wider text-gray-600 mb-2">Genres</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {movie.genres.map(g => (
+                                    <span key={g.id} className="font-display text-sm uppercase tracking-wider text-gray-700 bg-gray-200 px-3 py-1 border border-gray-400">
+                                        {g.name}
+                                    </span>
+                                ))}
                             </div>
                         </div>
+                        
+                        {/* Traductions disponibles */}
+                        {movie.translations && movie.translations.translations && movie.translations.translations.length > 0 && (
+                            <div className="mb-8">
+                                <h3 className="font-display text-xl uppercase tracking-wider text-gray-600 mb-2">Traductions Disponibles</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {movie.translations.translations.slice(0, 15).map((trans, idx) => (
+                                        <span key={idx} className="text-sm font-display uppercase tracking-wider text-gray-500 bg-gray-200 px-3 py-1 border border-gray-400">
+                                            {trans.iso_639_1.toUpperCase()}
+                                        </span>
+                                    ))}
+                                    {movie.translations.translations.length > 15 && (
+                                        <span className="text-sm font-display text-gray-500">+{movie.translations.translations.length - 15}</span>
+                                    )}
+                                </div>
+                            </div>
+                        )}
 
                         {movie.credits && movie.credits.cast && (
                             <div className="mb-8">
                                 <h3 className="font-display text-2xl uppercase tracking-wider text-gray-600 mb-4">Casting</h3>
                                 <div className="flex gap-4 overflow-x-auto pb-4">
                                     {movie.credits.cast.slice(0, 10).map(actor => (
-                                        <div key={actor.id} className="flex-shrink-0 w-32">
-                                            {actor.profile_path && (
+                                        <Link 
+                                            key={actor.id} 
+                                            to={`/person/${actor.id}`}
+                                            className="flex-shrink-0 w-32 group cursor-pointer"
+                                        >
+                                            {actor.profile_path ? (
                                                 <img 
                                                     src={tmdbService.getImageUrl(actor.profile_path, 'w185')}
                                                     alt={actor.name}
-                                                    className="w-full h-40 object-cover border-2 border-gray-800 mb-2"
+                                                    className="w-full h-40 object-cover border-2 border-gray-800 mb-2 grayscale group-hover:grayscale-0 transition-all"
                                                 />
+                                            ) : (
+                                                <div className="w-full h-40 bg-gray-300 border-2 border-gray-800 mb-2 flex items-center justify-center">
+                                                    <span className="text-gray-600 text-3xl font-display">?</span>
+                                                </div>
                                             )}
-                                            <p className="font-display text-sm text-gray-700">{actor.name}</p>
+                                            <p className="font-display text-sm text-gray-700 group-hover:text-gray-900">{actor.name}</p>
                                             <p className="font-serif text-xs text-gray-500">{actor.character}</p>
-                                        </div>
+                                        </Link>
                                     ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {/* Réalisateur et équipe */}
+                        {movie.credits && movie.credits.crew && (
+                            <div className="mb-8">
+                                <h3 className="font-display text-2xl uppercase tracking-wider text-gray-600 mb-4">Équipe</h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {movie.credits.crew
+                                        .filter(c => ['Director', 'Writer', 'Screenplay', 'Producer'].includes(c.job))
+                                        .slice(0, 6)
+                                        .map((crew, idx) => (
+                                            <Link 
+                                                key={`${crew.id}-${idx}`}
+                                                to={`/person/${crew.id}`}
+                                                className="bg-gray-100 border border-gray-400 p-3 hover:bg-gray-200 transition-colors"
+                                            >
+                                                <p className="font-display text-sm uppercase tracking-wider text-gray-700">{crew.name}</p>
+                                                <p className="font-serif text-xs text-gray-500">{crew.job}</p>
+                                            </Link>
+                                        ))}
                                 </div>
                             </div>
                         )}
@@ -261,6 +355,115 @@ function MovieDetail() {
                             {movie.similar.results.slice(0, 5).map(similar => (
                                 <MediaCard key={similar.id} item={similar} type="movie" />
                             ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* Critiques TMDB */}
+                {movie.reviews && movie.reviews.results && movie.reviews.results.length > 0 && (
+                    <section className="mb-16">
+                        <h2 className="text-4xl font-display uppercase tracking-wider text-gray-600 mb-8">
+                            <span className="text-5xl text-gray-800">C</span>ritiques TMDB
+                        </h2>
+                        <div className="space-y-6">
+                            {movie.reviews.results.slice(0, 5).map((review) => {
+                                const [expanded, setExpanded] = React.useState(false);
+                                const isLong = review.content.length > 500;
+                                const avatarPath = review.author_details?.avatar_path;
+                                const avatarUrl = avatarPath 
+                                    ? (avatarPath.startsWith('/https') 
+                                        ? avatarPath.substring(1) 
+                                        : `https://image.tmdb.org/t/p/w64${avatarPath}`)
+                                    : null;
+                                
+                                return (
+                                    <div key={review.id} className="border-2 border-gray-400 p-6 bg-white">
+                                        <div className="flex gap-4 mb-4">
+                                            {/* Avatar */}
+                                            <div className="flex-shrink-0">
+                                                {avatarUrl ? (
+                                                    <img 
+                                                        src={avatarUrl} 
+                                                        alt={review.author}
+                                                        className="w-16 h-16 rounded-full border-2 border-gray-800 object-cover"
+                                                    />
+                                                ) : (
+                                                    <div className="w-16 h-16 rounded-full bg-gray-300 border-2 border-gray-800 flex items-center justify-center">
+                                                        <span className="text-2xl font-display text-gray-600">
+                                                            {review.author[0].toUpperCase()}
+                                                        </span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            
+                                            {/* Infos auteur */}
+                                            <div className="flex-1">
+                                                <div className="flex items-start justify-between mb-2">
+                                                    <div>
+                                                        <div className="flex items-center gap-2 mb-1">
+                                                            <p className="font-display text-lg uppercase tracking-wider text-gray-700">
+                                                                {review.author}
+                                                            </p>
+                                                            {review.author_details?.username && review.author_details.username !== review.author && (
+                                                                <span className="font-serif text-sm text-gray-500">@{review.author_details.username}</span>
+                                                            )}
+                                                        </div>
+                                                        <p className="font-serif text-xs text-gray-500">
+                                                            {new Date(review.created_at).toLocaleDateString('fr-FR', {
+                                                                day: 'numeric',
+                                                                month: 'long',
+                                                                year: 'numeric',
+                                                                hour: '2-digit',
+                                                                minute: '2-digit'
+                                                            })}
+                                                            {review.updated_at && review.updated_at !== review.created_at && (
+                                                                <span className="ml-2 italic">
+                                                                    (modifié le {new Date(review.updated_at).toLocaleDateString('fr-FR')})
+                                                                </span>
+                                                            )}
+                                                        </p>
+                                                    </div>
+                                                    
+                                                    {/* Note */}
+                                                    {review.author_details?.rating && (
+                                                        <div className="bg-yellow-500 px-3 py-2 border-2 border-gray-800">
+                                                            <span className="font-display text-sm">★ {review.author_details.rating}/10</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                
+                                                {/* Contenu de la critique */}
+                                                <div className="font-serif text-gray-700 leading-relaxed">
+                                                    <p className={!expanded && isLong ? 'line-clamp-6' : ''}>
+                                                        {review.content}
+                                                    </p>
+                                                    {isLong && (
+                                                        <button
+                                                            onClick={() => setExpanded(!expanded)}
+                                                            className="mt-2 text-sm font-display uppercase tracking-wider text-gray-600 hover:text-gray-800 underline"
+                                                        >
+                                                            {expanded ? '↑ Voir moins' : '↓ Voir plus'}
+                                                        </button>
+                                                    )}
+                                                </div>
+                                                
+                                                {/* Lien source */}
+                                                {review.url && (
+                                                    <a 
+                                                        href={review.url} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-1 mt-3 text-xs font-display uppercase tracking-wider text-gray-500 hover:text-gray-700 transition-colors"
+                                                    >
+                                                        <span>Voir sur TMDB</span>
+                                                        <span>→</span>
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </section>
                 )}

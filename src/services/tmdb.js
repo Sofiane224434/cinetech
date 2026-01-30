@@ -15,7 +15,7 @@ export const tmdbService = {
   },
 
   getMovieDetails: async (movieId) => {
-    const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=fr-FR&append_to_response=credits,similar,reviews`);
+    const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=fr-FR&append_to_response=credits,similar,reviews,translations`);
     return response.json();
   },
 
@@ -36,7 +36,19 @@ export const tmdbService = {
   },
 
   getSeriesDetails: async (seriesId) => {
-    const response = await fetch(`${BASE_URL}/tv/${seriesId}?api_key=${API_KEY}&language=fr-FR&append_to_response=credits,similar,reviews`);
+    const response = await fetch(`${BASE_URL}/tv/${seriesId}?api_key=${API_KEY}&language=fr-FR&append_to_response=credits,similar,reviews,translations`);
+    return response.json();
+  },
+
+  // Détails d'une saison
+  getSeasonDetails: async (seriesId, seasonNumber) => {
+    const response = await fetch(`${BASE_URL}/tv/${seriesId}/season/${seasonNumber}?api_key=${API_KEY}&language=fr-FR`);
+    return response.json();
+  },
+
+  // Personnes (acteurs, réalisateurs, etc.)
+  getPersonDetails: async (personId) => {
+    const response = await fetch(`${BASE_URL}/person/${personId}?api_key=${API_KEY}&language=fr-FR&append_to_response=combined_credits`);
     return response.json();
   },
 
