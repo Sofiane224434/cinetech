@@ -77,12 +77,12 @@ function Header() {
 
     const handleSuggestionClick = (item) => {
         const type = item.media_type === 'movie' ? 'movie' : 'series';
-        
+
         // Ajouter à l'historique
         const newHistory = [item.title || item.name, ...searchHistory.filter(h => h !== (item.title || item.name))].slice(0, 5);
         setSearchHistory(newHistory);
         localStorage.setItem('searchHistory', JSON.stringify(newHistory));
-        
+
         navigate(`/${type}/${item.id}`);
         setSearchQuery('');
         setShowSuggestions(false);
@@ -126,25 +126,22 @@ function Header() {
                         <div className="flex gap-2 mb-2">
                             <button
                                 onClick={() => setSearchFilter('all')}
-                                className={`px-3 py-1 text-xs font-display uppercase tracking-wider transition-colors ${
-                                    searchFilter === 'all' ? 'bg-gray-700 text-gray-300' : 'bg-gray-900 text-gray-500 hover:text-gray-300'
-                                }`}
+                                className={`px-3 py-1 text-xs font-display uppercase tracking-wider transition-colors ${searchFilter === 'all' ? 'bg-gray-700 text-gray-300' : 'bg-gray-900 text-gray-500 hover:text-gray-300'
+                                    }`}
                             >
                                 Tous
                             </button>
                             <button
                                 onClick={() => setSearchFilter('movie')}
-                                className={`px-3 py-1 text-xs font-display uppercase tracking-wider transition-colors ${
-                                    searchFilter === 'movie' ? 'bg-gray-700 text-gray-300' : 'bg-gray-900 text-gray-500 hover:text-gray-300'
-                                }`}
+                                className={`px-3 py-1 text-xs font-display uppercase tracking-wider transition-colors ${searchFilter === 'movie' ? 'bg-gray-700 text-gray-300' : 'bg-gray-900 text-gray-500 hover:text-gray-300'
+                                    }`}
                             >
                                 Films
                             </button>
                             <button
                                 onClick={() => setSearchFilter('tv')}
-                                className={`px-3 py-1 text-xs font-display uppercase tracking-wider transition-colors ${
-                                    searchFilter === 'tv' ? 'bg-gray-700 text-gray-300' : 'bg-gray-900 text-gray-500 hover:text-gray-300'
-                                }`}
+                                className={`px-3 py-1 text-xs font-display uppercase tracking-wider transition-colors ${searchFilter === 'tv' ? 'bg-gray-700 text-gray-300' : 'bg-gray-900 text-gray-500 hover:text-gray-300'
+                                    }`}
                             >
                                 Séries
                             </button>
@@ -190,7 +187,7 @@ function Header() {
                                     ) : searchQuery.length >= 2 ? (
                                         <div className="px-4 py-3 text-gray-500 font-serif text-sm">Aucun résultat trouvé</div>
                                     ) : null}
-                                    
+
                                     {searchHistory.length > 0 && searchQuery.length < 2 && (
                                         <>
                                             <div className="px-4 py-2 flex justify-between items-center border-t border-gray-800">
