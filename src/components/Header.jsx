@@ -97,8 +97,8 @@ function Header() {
         <header className="bg-black border-b-2 border-gray-800 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between gap-8">
-                    <Link to="/" className="font-display text-3xl uppercase tracking-widest text-gray-400 hover:text-gray-300 transition-colors">
-                        <span className="text-4xl">M</span>ovie<span className="text-4xl">D</span><span className="text-4xl">B</span>
+                    <Link to="/" className="font-display text-3xl tracking-widest text-gray-400 hover:text-gray-300 transition-colors">
+                        <span className="text-4xl">M</span>ovie<span className="text-4xl">DB</span>
                     </Link>
 
                     <nav className="hidden md:flex gap-6">
