@@ -2,7 +2,12 @@ version: "3.8"
 
 services:
   cinetech:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_TMDB_API_KEY: "4a0c4142b932de459dccdf51e2761cf9"
+        VITE_TMDB_BASE_URL: "https://api.themoviedb.org/3"
     container_name: cinetech
     restart: unless-stopped
     networks:
