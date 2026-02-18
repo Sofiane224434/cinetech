@@ -108,8 +108,8 @@ function LateralNav() {
                         <svg className="w-8 h-8 text-gray-500 group-hover:text-gray-300 transition-colors" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm-7 10H7v-2h5v2zm5-4H7V8h10v2z"/>
                         </svg>
-                        <h3 className="text-2xl font-bold text-gray-400 uppercase tracking-widest font-display underline decoration-gray-600 decoration-2 underline-offset-4 group-hover:text-gray-300 transition-colors text-center">
-                            <span className="text-3xl">Mm</span>ovie<span className="text-3xl">D</span><span className="text-3xl">b</span>
+                        <h3 className="text-2xl font-bold text-gray-400 tracking-widest font-display underline decoration-gray-600 decoration-2 underline-offset-4 group-hover:text-gray-300 transition-colors text-center">
+                            <span className="text-3xl">M</span>OVIE<span className="text-3xl">D</span><span className="text-3xl">B</span>
                         </h3>
                     </div>
                 </Link>
