@@ -6,8 +6,21 @@ services:
     container_name: cinetech
     restart: unless-stopped
     networks:
-      - azim-main_web
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cinetech.rule=Host(`moviedb.azim404.com`)"
+      - "traefik.http.routers.cinetech.entrypoints=websecure"
+      - "traefik.http.routers.cinetech.tls=true"
+      - "traefik.http.routers.cinetech.tls.certresolver=myresolver"
+      - "traefik.http.services.cinetech.loadbalancer.server.port=80"
+      
+      # Redirection HTTP vers HTTPS
+      - "traefik.http.middlewares.cinetech-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.cinetech-http.rule=Host(`moviedb.azim404.com`)"
+      - "traefik.http.routers.cinetech-http.entrypoints=web"
+      - "traefik.http.routers.cinetech-http.middlewares=cinetech-redirect"
 
 networks:
-  azim-main_web:
+  web:
     external: true
