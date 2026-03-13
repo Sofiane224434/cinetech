@@ -13,16 +13,31 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USERNAME }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          port: 2222
+          port: ${{ secrets.VPS_PORT }}
           script: |
-            cd ~/apps/cinetech
-            git pull origin main
-            docker compose down
-            docker compose build --no-cache
-            docker compose up -d
+            set -e
+
+            APP_DIR=~/apps/cinetech
+            REPO_URL=https://github.com/${{ github.repository }}.git
+
+            docker network inspect web >/dev/null 2>&1 || docker network create web
+
+            mkdir -p $APP_DIR
+            cd $APP_DIR
+
+            if [ -d ".git" ]; then
+              git fetch origin
+              git reset --hard origin/main
+              git clean -fd
+            else
+              git clone $REPO_URL .
+            fi
+
+            docker compose down || true
+            docker compose up -d --build
             docker image prune -f
