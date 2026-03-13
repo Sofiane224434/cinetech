@@ -33,9 +33,12 @@ jobs:
             if [ -d ".git" ]; then
               git fetch origin
               git reset --hard origin/main
-              git clean -fd
+              git clean -fd -e .env
             else
-              git clone $REPO_URL .
+              git init
+              git remote add origin $REPO_URL
+              git fetch origin main
+              git checkout -B main origin/main
             fi
 
             docker compose down || true

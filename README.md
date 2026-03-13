@@ -1,16 +1,47 @@
-# React + Vite
+# cinetech
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Application front Movie DB servie sur moviedb.azim404.com.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React + Vite
+- Docker multi-stage avec Nginx dans le conteneur
+- Nginx sur le VPS comme reverse proxy hote
+- GitHub Actions pour le deploiement automatique
 
-## React Compiler
+## Variables d'environnement
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Copier .env.example vers .env pour le developpement local ou pour le build sur le VPS.
 
-## Expanding the ESLint configuration
+Variables attendues:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- VITE_TMDB_API_KEY
+- VITE_TMDB_BASE_URL
+
+## Developpement local
+
+```bash
+npm install
+npm run dev
+```
+
+## Production reelle
+
+- Le conteneur expose 127.0.0.1:3003:80
+- Nginx sur le VPS route moviedb.azim404.com vers ce port
+- Le TLS est gere au niveau hote par Certbot et Nginx
+- Les build args Docker viennent du fichier .env local au repo de deploiement
+
+## Deploiement
+
+Le workflow deploye dans ~/apps/cinetech puis reconstruit l'image sur le VPS.
+
+Secrets GitHub requis:
+
+- VPS_HOST
+- VPS_USERNAME
+- VPS_SSH_KEY
+
+## Point critique
+
+Ne jamais committer de vraie cle TMDB dans le repo. Utiliser .env en local et .env.example comme modele.
