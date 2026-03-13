@@ -41,6 +41,8 @@ jobs:
               git checkout -B main origin/main
             fi
 
+            test -f .env
+
             docker compose down || true
             docker compose up -d --build
             docker image prune -f
