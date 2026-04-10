@@ -42,7 +42,7 @@ function PersonDetail() {
     return (
         <div className="vintage-frame">
             <div className="vintage-frame-top"></div>
-            
+
             <div className="max-w-7xl mx-auto px-6 py-12">
                 <button
                     onClick={() => navigate(-1)}
@@ -54,24 +54,24 @@ function PersonDetail() {
                 <div className="grid md:grid-cols-4 gap-12 mb-16">
                     <div>
                         {profileUrl && (
-                            <img 
-                                src={profileUrl} 
-                                alt={person.name} 
-                                className="w-full border-4 border-gray-800 mb-4" 
+                            <img
+                                src={profileUrl}
+                                alt={person.name}
+                                className="w-full border-4 border-gray-800 mb-4"
                             />
                         )}
-                        
+
                         <div className="bg-gray-800 border-2 border-gray-900 p-4">
                             <h3 className="font-display text-sm uppercase tracking-wider text-gray-400 mb-3">Informations</h3>
-                            
+
                             {person.birthday && (
                                 <div className="mb-3">
                                     <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Naissance</p>
                                     <p className="font-serif text-sm text-gray-300">
-                                        {new Date(person.birthday).toLocaleDateString('fr-FR', { 
-                                            day: 'numeric', 
-                                            month: 'long', 
-                                            year: 'numeric' 
+                                        {new Date(person.birthday).toLocaleDateString('fr-FR', {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
                                         })}
                                     </p>
                                     {person.place_of_birth && (
@@ -79,20 +79,20 @@ function PersonDetail() {
                                     )}
                                 </div>
                             )}
-                            
+
                             {person.deathday && (
                                 <div className="mb-3">
                                     <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Décès</p>
                                     <p className="font-serif text-sm text-gray-300">
-                                        {new Date(person.deathday).toLocaleDateString('fr-FR', { 
-                                            day: 'numeric', 
-                                            month: 'long', 
-                                            year: 'numeric' 
+                                        {new Date(person.deathday).toLocaleDateString('fr-FR', {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
                                         })}
                                     </p>
                                 </div>
                             )}
-                            
+
                             {person.known_for_department && (
                                 <div className="mb-3">
                                     <p className="text-xs font-display uppercase tracking-wider text-gray-500 mb-1">Métier</p>
@@ -126,10 +126,10 @@ function PersonDetail() {
                                         .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
                                         .slice(0, 10)
                                         .map((credit) => (
-                                            <MediaCard 
-                                                key={`${credit.media_type}-${credit.id}`} 
-                                                item={credit} 
-                                                type={credit.media_type} 
+                                            <MediaCard
+                                                key={`${credit.media_type}-${credit.id}`}
+                                                item={credit}
+                                                type={credit.media_type}
                                             />
                                         ))}
                                 </div>
@@ -146,10 +146,10 @@ function PersonDetail() {
                                         .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
                                         .slice(0, 10)
                                         .map((credit) => (
-                                            <MediaCard 
-                                                key={credit.id} 
-                                                item={credit} 
-                                                type="movie" 
+                                            <MediaCard
+                                                key={credit.id}
+                                                item={credit}
+                                                type="movie"
                                             />
                                         ))}
                                 </div>
@@ -171,16 +171,16 @@ function PersonDetail() {
                                         .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
                                         .slice(0, 10)
                                         .map((credit) => (
-                                            <MediaCard 
-                                                key={credit.id} 
-                                                item={credit} 
-                                                type="series" 
+                                            <MediaCard
+                                                key={credit.id}
+                                                item={credit}
+                                                type="series"
                                             />
                                         ))}
                                 </div>
                                 {tvCredits.length > 10 && (
                                     <p className="mt-4 text-center font-serif text-gray-600">
-                                        Et {tvCredits.length - 10} autres séries...
+                                        Et {tvCredits.length - 10} autres séries..
                                     </p>
                                 )}
                             </section>
@@ -188,7 +188,7 @@ function PersonDetail() {
                     </div>
                 </div>
             </div>
-            
+
             <div className="vintage-frame-bottom"></div>
         </div>
     );
