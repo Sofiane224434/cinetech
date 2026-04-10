@@ -1,0 +1,26 @@
+# robots.txt - Configuration SEO MovieDB
+
+# Autoriser tous les crawlers
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /src/
+Disallow: /.env*
+
+# Règles spécifiques pour Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Règles spécifiques pour Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Localisation du plan du site
+Sitemap: https://moviedb.azim404.com/sitemap.xml
+
+# Délai de crawl
+Crawl-delay: 1
+

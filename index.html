@@ -1,13 +1,68 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
+    <!-- Balises Meta Fondamentales -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Balises Meta SEO -->
+    <title>MovieDB - Base de données films, séries et anime</title>
+    <meta name="description" content="Découvrez des milliers de films, séries TV et anime. Consultez les notes, avis, informations de diffusion et créez votre liste de visionnage sur MovieDB." />
+    <meta name="keywords" content="films, séries, anime, base de données cinéma, films à regarder, notes films, avis films" />
+    <meta name="author" content="MovieDB" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="fr-FR" />
+    <link rel="canonical" href="https://moviedb.azim404.com/" />
+    
+    <!-- Balises Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MovieDB - Base de données films, séries et anime" />
+    <meta property="og:description" content="Découvrez des milliers de films, séries TV et anime. Consultez les notes, avis, informations de diffusion et créez votre liste de visionnage sur MovieDB." />
+    <meta property="og:url" content="https://moviedb.azim404.com/" />
+    <meta property="og:site_name" content="MovieDB" />
+    <meta property="og:image" content="https://moviedb.azim404.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="fr_FR" />
+    
+    <!-- Balises Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MovieDB - Base de données films, séries et anime" />
+    <meta name="twitter:description" content="Découvrez des milliers de films, séries TV et anime. Consultez les notes, avis, informations de diffusion et créez votre liste de visionnage sur MovieDB." />
+    <meta name="twitter:image" content="https://moviedb.azim404.com/og-image.png" />
+    
+    <!-- Favicon & Icônes -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Préconnexion pour Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Besley:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <title>cinetech</title>
+    
+    <!-- Plan du site -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- Données structurées JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MovieDB",
+      "description": "Découvrez des milliers de films, séries TV et anime. Consultez les notes, avis, informations de diffusion et créez votre liste de visionnage sur MovieDB.",
+      "url": "https://moviedb.azim404.com/",
+      "inLanguage": "fr-FR",
+      "searchAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://moviedb.azim404.com/movies?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
