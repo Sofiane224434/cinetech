@@ -145,7 +145,7 @@ function LateralNav() {
 
             <nav
                 className={`bg-black z-50 border-l-2 border-black
-                    md:w-2/12 md:min-h-screen md:static md:translate-x-0 md:order-2
+                    md:w-2/12 md:h-screen md:sticky md:top-0 md:translate-x-0 md:order-2 md:self-start
                     fixed top-0 right-0 h-full w-72 max-w-[85vw] transform transition-transform duration-300
                     ${mobileOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`}
             >
@@ -159,7 +159,7 @@ function LateralNav() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            <div className="sticky top-0 flex flex-col max-h-screen overflow-y-auto">
+            <div className="flex flex-col h-full overflow-y-auto">
                 <Link to="/">
                     <div className="p-4 flex flex-col items-center gap-2 cursor-pointer group">
                         <svg className="w-8 h-8 text-gray-500 group-hover:text-gray-300 transition-colors" viewBox="0 0 24 24" fill="currentColor">
