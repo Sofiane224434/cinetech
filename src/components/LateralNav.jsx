@@ -159,7 +159,7 @@ function LateralNav() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            <div className="flex flex-col h-full max-h-screen overflow-y-auto">
+            <div className="flex flex-col h-full max-h-screen overflow-y-auto no-scrollbar">
                 <Link to="/">
                     <div className="p-4 flex flex-col items-center gap-3 cursor-pointer group">
                         <span className="flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-lg group-hover:scale-105 transition-transform">

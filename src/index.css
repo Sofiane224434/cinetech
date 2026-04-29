@@ -29,6 +29,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Council', sans-serif;
 }
 
+/* Masquer la scrollbar de la sidebar tout en gardant le scroll */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
+}
+
 /* Style pour la bordure ornementale */
 .vintage-frame {
   position: relative;
