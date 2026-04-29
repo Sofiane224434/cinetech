@@ -124,7 +124,7 @@ function MovieDetail() {
                 
                 <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
                     {/* COLONNE GAUCHE */}
-                    <div>
+                    <div className="min-w-0">
                         {posterUrl && (
                             <img src={posterUrl} alt={movie.title} className="w-full border-4 border-gray-800 mb-6" />
                         )}
@@ -229,7 +229,7 @@ function MovieDetail() {
                     </div>
 
                     {/* COLONNE DROITE */}
-                    <div>
+                    <div className="min-w-0">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600 mb-4 break-words">
                             {movie.title}
                         </h1>

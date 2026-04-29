@@ -41,6 +41,11 @@ img, video {
   height: auto;
 }
 
+/* Filet de securite : empecher les enfants de grilles de deborder a cause d'images intrinseques */
+.grid > * {
+  min-width: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Council', sans-serif;
 }
