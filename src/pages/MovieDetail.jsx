@@ -230,7 +230,7 @@ function MovieDetail() {
 
                     {/* COLONNE DROITE */}
                     <div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600 mb-4">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600 mb-4 break-words">
                             {movie.title}
                         </h1>
                         
@@ -362,8 +362,8 @@ function MovieDetail() {
                 {/* Critiques TMDB */}
                 {movie.reviews && movie.reviews.results && movie.reviews.results.length > 0 && (
                     <section className="mb-16">
-                        <h2 className="text-4xl font-display uppercase tracking-wider text-gray-600 mb-8">
-                            <span className="text-5xl text-gray-800">C</span>ritiques TMDB
+                        <h2 className="text-3xl sm:text-4xl font-display uppercase tracking-wider text-gray-600 mb-8 break-words">
+                            <span className="text-4xl sm:text-5xl text-gray-800">C</span>ritiques TMDB
                         </h2>
                         <div className="space-y-6">
                             {movie.reviews.results.slice(0, 5).map((review) => {
@@ -469,8 +469,8 @@ function MovieDetail() {
                 )}
 
                 <section className="border-t-2 border-gray-800 pt-12">
-                    <h2 className="text-4xl font-display uppercase tracking-wider text-gray-600 mb-8">
-                        <span className="text-5xl text-gray-800">C</span>ommentaires
+                    <h2 className="text-3xl sm:text-4xl font-display uppercase tracking-wider text-gray-600 mb-8 break-words">
+                        <span className="text-4xl sm:text-5xl text-gray-800">C</span>ommentaires
                     </h2>
 
                     <form onSubmit={handleSubmitComment} className="mb-8">

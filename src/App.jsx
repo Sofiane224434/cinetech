@@ -14,7 +14,7 @@ import Watchlist from './pages/Watchlist';
 function App() {
     return (
         <Router>
-            <div className="min-h-screen bg-[#f5f5f0] text-gray-900 font-serif">
+            <div className="min-h-screen bg-[#f5f5f0] text-gray-900 font-serif overflow-x-hidden">
                 <div className="flex flex-col md:flex-row">
                     <main className="flex-1 min-w-0 order-2 md:order-1">
                         <Routes>

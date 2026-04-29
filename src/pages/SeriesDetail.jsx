@@ -263,7 +263,7 @@ function SeriesDetail() {
 
                     {/* COLONNE DROITE */}
                     <div>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600 mb-4">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600 mb-4 break-words">
                             {series.name}
                         </h1>
                         
@@ -409,10 +409,10 @@ function SeriesDetail() {
 
                 {series.similar && series.similar.results.length > 0 && (
                     <section className="mb-16">
-                        <h2 className="text-4xl font-display uppercase tracking-wider text-gray-600 mb-8">
-                            <span className="text-5xl text-gray-800">S</span>éries similaires
+                        <h2 className="text-3xl sm:text-4xl font-display uppercase tracking-wider text-gray-600 mb-8 break-words">
+                            <span className="text-4xl sm:text-5xl text-gray-800">S</span>éries similaires
                         </h2>
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8">
                             {series.similar.results.slice(0, 5).map(similar => (
                                 <MediaCard key={similar.id} item={similar} type="series" />
                             ))}
@@ -423,8 +423,8 @@ function SeriesDetail() {
                 {/* Critiques TMDB */}
                 {series.reviews && series.reviews.results && series.reviews.results.length > 0 && (
                     <section className="mb-16">
-                        <h2 className="text-4xl font-display uppercase tracking-wider text-gray-600 mb-8">
-                            <span className="text-5xl text-gray-800">C</span>ritiques TMDB
+                        <h2 className="text-3xl sm:text-4xl font-display uppercase tracking-wider text-gray-600 mb-8 break-words">
+                            <span className="text-4xl sm:text-5xl text-gray-800">C</span>ritiques TMDB
                         </h2>
                         <div className="space-y-6">
                             {series.reviews.results.slice(0, 5).map((review) => {
@@ -530,8 +530,8 @@ function SeriesDetail() {
                 )}
 
                 <section className="border-t-2 border-gray-800 pt-12">
-                    <h2 className="text-4xl font-display uppercase tracking-wider text-gray-600 mb-8">
-                        <span className="text-5xl text-gray-800">C</span>ommentaires
+                    <h2 className="text-3xl sm:text-4xl font-display uppercase tracking-wider text-gray-600 mb-8 break-words">
+                        <span className="text-4xl sm:text-5xl text-gray-800">C</span>ommentaires
                     </h2>
 
                     <form onSubmit={handleSubmitComment} className="mb-8">
