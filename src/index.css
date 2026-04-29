@@ -37,6 +37,23 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10;
 }
 
+/* Reduction du cadre ornemental sur mobile */
+@media (max-width: 767px) {
+  .vintage-frame {
+    padding: 16px 12px;
+  }
+  .vintage-frame::before,
+  .vintage-frame::after {
+    display: none;
+  }
+  .vintage-frame-top,
+  .vintage-frame-bottom {
+    left: 12px;
+    right: 12px;
+    height: 16px;
+  }
+}
+
 /* Bordures latérales (gauche et droite) */
 .vintage-frame::before,
 .vintage-frame::after {

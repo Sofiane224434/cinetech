@@ -43,15 +43,15 @@ function PersonDetail() {
         <div className="vintage-frame">
             <div className="vintage-frame-top"></div>
 
-            <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 py-8 md:py-12">
                 <button
                     onClick={() => navigate(-1)}
-                    className="mb-8 px-6 py-3 font-display uppercase tracking-wider bg-gray-800 text-gray-400 hover:text-white transition-colors border-2 border-gray-900 inline-flex items-center gap-2"
+                    className="mb-6 md:mb-8 px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-display uppercase tracking-wider bg-gray-800 text-gray-400 hover:text-white transition-colors border-2 border-gray-900 inline-flex items-center gap-2"
                 >
                     <span>←</span> Retour
                 </button>
 
-                <div className="grid md:grid-cols-4 gap-12 mb-16">
+                <div className="grid md:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
                     <div>
                         {profileUrl && (
                             <img
@@ -103,7 +103,7 @@ function PersonDetail() {
                     </div>
 
                     <div className="md:col-span-3">
-                        <h1 className="text-6xl font-display uppercase tracking-wider text-gray-600 mb-6">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-wider text-gray-600 mb-6">
                             {person.name}
                         </h1>
 

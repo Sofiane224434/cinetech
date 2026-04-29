@@ -39,15 +39,15 @@ function Watchlist() {
         <div className="vintage-frame">
             <div className="vintage-frame-top"></div>
             
-            <div className="max-w-7xl mx-auto px-6 py-12">
-                <h1 className="text-6xl font-display uppercase tracking-wider text-gray-600 mb-8">
-                    <span className="text-7xl text-gray-800">M</span>a Watchlist
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 py-8 md:py-12">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-wider text-gray-600 mb-6 md:mb-8">
+                    <span className="text-5xl sm:text-6xl md:text-7xl text-gray-800">M</span>a Watchlist
                 </h1>
 
-                <div className="flex gap-4 mb-8">
+                <div className="flex flex-wrap gap-2 md:gap-4 mb-6 md:mb-8">
                     <button
                         onClick={() => setFilter('all')}
-                        className={`px-6 py-2 font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
+                        className={`px-3 md:px-6 py-2 text-xs md:text-base font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
                             filter === 'all' ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600 hover:bg-gray-800 hover:text-gray-300'
                         }`}
                     >
@@ -55,7 +55,7 @@ function Watchlist() {
                     </button>
                     <button
                         onClick={() => setFilter('to_watch')}
-                        className={`px-6 py-2 font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
+                        className={`px-3 md:px-6 py-2 text-xs md:text-base font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
                             filter === 'to_watch' ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600 hover:bg-gray-800 hover:text-gray-300'
                         }`}
                     >
@@ -63,7 +63,7 @@ function Watchlist() {
                     </button>
                     <button
                         onClick={() => setFilter('watching')}
-                        className={`px-6 py-2 font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
+                        className={`px-3 md:px-6 py-2 text-xs md:text-base font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
                             filter === 'watching' ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600 hover:bg-gray-800 hover:text-gray-300'
                         }`}
                     >
@@ -71,7 +71,7 @@ function Watchlist() {
                     </button>
                     <button
                         onClick={() => setFilter('watched')}
-                        className={`px-6 py-2 font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
+                        className={`px-3 md:px-6 py-2 text-xs md:text-base font-display uppercase tracking-wider border-2 border-gray-800 transition-colors ${
                             filter === 'watched' ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600 hover:bg-gray-800 hover:text-gray-300'
                         }`}
                     >
@@ -89,7 +89,7 @@ function Watchlist() {
                         </p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8">
                         {filteredList.map((item) => {
                             const posterUrl = item.poster_path ? tmdbService.getImageUrl(item.poster_path, 'w500') : null;
                             const detailPath = `/${item.type}/${item.id}`;

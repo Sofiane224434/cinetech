@@ -130,21 +130,21 @@ function SeriesDetail() {
             
             <div>
             {backdropUrl && (
-                <div className="relative h-96 mb-12">
+                <div className="relative h-48 sm:h-64 md:h-96 mb-8 md:mb-12">
                     <img src={backdropUrl} alt={series.name} className="w-full h-full object-cover grayscale opacity-40" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#f5f5f0] to-transparent"></div>
                 </div>
             )}
 
-            <div className="max-w-7xl mx-auto px-6 py-12">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 py-8 md:py-12">
                 <button
                     onClick={() => navigate(-1)}
-                    className="mb-8 px-6 py-3 font-display uppercase tracking-wider bg-gray-800 text-gray-400 hover:text-white transition-colors border-2 border-gray-900 inline-flex items-center gap-2"
+                    className="mb-6 md:mb-8 px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-display uppercase tracking-wider bg-gray-800 text-gray-400 hover:text-white transition-colors border-2 border-gray-900 inline-flex items-center gap-2"
                 >
                     <span>←</span> Retour
                 </button>
                 
-                <div className="grid md:grid-cols-2 gap-12 mb-16">
+                <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
                     {/* COLONNE GAUCHE */}
                     <div>
                         {posterUrl && (
@@ -263,11 +263,11 @@ function SeriesDetail() {
 
                     {/* COLONNE DROITE */}
                     <div>
-                        <h1 className="text-5xl font-display uppercase tracking-wider text-gray-600 mb-4">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600 mb-4">
                             {series.name}
                         </h1>
                         
-                        <div className="flex items-center gap-4 mb-6 font-serif text-gray-600">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-6 font-serif text-sm md:text-base text-gray-600">
                             <span>{new Date(series.first_air_date).getFullYear()}</span>
                             {series.last_air_date && series.last_air_date !== series.first_air_date && (
                                 <>

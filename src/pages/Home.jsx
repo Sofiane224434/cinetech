@@ -42,44 +42,44 @@ function Home() {
         <div className="vintage-frame">
             <div className="vintage-frame-top"></div>
             
-            <div className="px-12 py-8">
-                <header className="mb-16 text-center">
-                    <h5 className="text-sm tracking-[0.5em] uppercase text-gray-600 mb-2">Bienvenue sur</h5>
-                    <h1 className="text-8xl font-display uppercase tracking-wider text-gray-500 mb-6 drop-shadow-xl">
-                        <span className="text-9xl">M</span>ovie<span className="text-9xl">D</span><span className="text-9xl">B</span>
+            <div className="px-3 sm:px-6 md:px-12 py-6 md:py-8">
+                <header className="mb-10 md:mb-16 text-center">
+                    <h5 className="text-xs sm:text-sm tracking-[0.3em] sm:tracking-[0.5em] uppercase text-gray-600 mb-2">Bienvenue sur</h5>
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-display uppercase tracking-wider text-gray-500 mb-6 drop-shadow-xl">
+                        <span className="text-6xl sm:text-7xl md:text-9xl">M</span>ovie<span className="text-6xl sm:text-7xl md:text-9xl">D</span><span className="text-6xl sm:text-7xl md:text-9xl">B</span>
                     </h1>
-                    <div className="h-1 w-32 bg-gray-400 mx-auto mb-8"></div>
-                    <p className="max-w-2xl mx-auto text-lg font-serif text-gray-600">
+                    <div className="h-1 w-24 md:w-32 bg-gray-400 mx-auto mb-6 md:mb-8"></div>
+                    <p className="max-w-2xl mx-auto text-base md:text-lg font-serif text-gray-600">
                         Découvrez les films et séries les plus populaires du moment. Explorez, notez et partagez vos favoris.
                     </p>
                 </header>
 
-            <section className="mb-20">
-                <div className="mb-8 flex items-center justify-between">
-                    <h2 className="text-5xl font-display uppercase tracking-wider text-gray-600">
-                        <span className="text-6xl text-gray-800">F</span>ilms Populaires
+            <section className="mb-12 md:mb-20">
+                <div className="mb-6 md:mb-8 flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600">
+                        <span className="text-4xl sm:text-5xl md:text-6xl text-gray-800">F</span>ilms Populaires
                     </h2>
-                    <a href="/movies" className="font-display text-sm uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors border-b-2 border-gray-400 hover:border-gray-800 pb-1">
+                    <a href="/movies" className="font-display text-xs md:text-sm uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors border-b-2 border-gray-400 hover:border-gray-800 pb-1">
                         Voir tout →
                     </a>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {movies.map((movie) => (
                         <MediaCard key={movie.id} item={movie} type="movie" />
                     ))}
                 </div>
             </section>
 
-            <section className="mb-20">
-                <div className="mb-8 flex items-center justify-between">
-                    <h2 className="text-5xl font-display uppercase tracking-wider text-gray-600">
-                        <span className="text-6xl text-gray-800">S</span>éries Populaires
+            <section className="mb-12 md:mb-20">
+                <div className="mb-6 md:mb-8 flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600">
+                        <span className="text-4xl sm:text-5xl md:text-6xl text-gray-800">S</span>éries Populaires
                     </h2>
-                    <a href="/series" className="font-display text-sm uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors border-b-2 border-gray-400 hover:border-gray-800 pb-1">
+                    <a href="/series" className="font-display text-xs md:text-sm uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors border-b-2 border-gray-400 hover:border-gray-800 pb-1">
                         Voir tout →
                     </a>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {series.map((serie) => (
                         <MediaCard key={serie.id} item={serie} type="series" />
                     ))}
@@ -87,15 +87,15 @@ function Home() {
             </section>
 
             <section>
-                <div className="mb-8 flex items-center justify-between">
-                    <h2 className="text-5xl font-display uppercase tracking-wider text-gray-600">
-                        <span className="text-6xl text-gray-800">A</span>nimes Populaires
+                <div className="mb-6 md:mb-8 flex flex-wrap items-center justify-between gap-2">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-display uppercase tracking-wider text-gray-600">
+                        <span className="text-4xl sm:text-5xl md:text-6xl text-gray-800">A</span>nimes Populaires
                     </h2>
-                    <a href="/anime" className="font-display text-sm uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors border-b-2 border-gray-400 hover:border-gray-800 pb-1">
+                    <a href="/anime" className="font-display text-xs md:text-sm uppercase tracking-widest text-gray-500 hover:text-gray-800 transition-colors border-b-2 border-gray-400 hover:border-gray-800 pb-1">
                         Voir tout →
                     </a>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                     {anime.map((item) => (
                         <MediaCard key={item.id} item={item} type="series" />
                     ))}

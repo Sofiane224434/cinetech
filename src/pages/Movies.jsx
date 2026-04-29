@@ -38,35 +38,35 @@ function Movies() {
         <div className="vintage-frame">
             <div className="vintage-frame-top"></div>
             
-            <div className="px-12 py-8">
-                <header className="mb-12">
-                <h1 className="text-6xl font-display uppercase tracking-wider text-gray-600 mb-4">
-                    <span className="text-7xl text-gray-800">F</span>ilms
+            <div className="px-3 sm:px-6 md:px-12 py-6 md:py-8">
+                <header className="mb-8 md:mb-12">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-display uppercase tracking-wider text-gray-600 mb-4">
+                    <span className="text-5xl sm:text-6xl md:text-7xl text-gray-800">F</span>ilms
                 </h1>
-                <div className="h-1 w-32 bg-gray-400"></div>
+                <div className="h-1 w-24 md:w-32 bg-gray-400"></div>
             </header>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-8 mb-8 md:mb-12">
                 {movies.map((movie) => (
                     <MediaCard key={movie.id} item={movie} type="movie" />
                 ))}
             </div>
 
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
                 <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="px-6 py-3 font-display uppercase tracking-wider bg-black text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors border-2 border-gray-800"
+                    className="px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-display uppercase tracking-wider bg-black text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors border-2 border-gray-800"
                 >
                     ← Précédent
                 </button>
-                <span className="font-display text-gray-600">
+                <span className="font-display text-sm md:text-base text-gray-600">
                     Page {page} / {totalPages}
                 </span>
                 <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="px-6 py-3 font-display uppercase tracking-wider bg-black text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors border-2 border-gray-800"
+                    className="px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-display uppercase tracking-wider bg-black text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors border-2 border-gray-800"
                 >
                     Suivant →
                 </button>

@@ -10,8 +10,20 @@ function LateralNav() {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [searchFilter, setSearchFilter] = useState('all');
     const [searchHistory, setSearchHistory] = useState([]);
+    const [mobileOpen, setMobileOpen] = useState(false);
     const searchRef = useRef(null);
     const searchInputRef = useRef(null);
+
+    // Fermer le drawer au changement de route
+    useEffect(() => {
+        setMobileOpen(false);
+    }, [location.pathname]);
+
+    // Empecher le scroll du body quand le drawer est ouvert
+    useEffect(() => {
+        document.body.style.overflow = mobileOpen ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [mobileOpen]);
     
     const mainLinks = [
         { name: 'Accueil', path: '/' },
@@ -101,8 +113,53 @@ function LateralNav() {
     };
     
     return (
-        <nav className="w-2/12 border-l-2 border-black bg-black min-h-screen z-10">
-            <div className="sticky top-0 flex flex-col max-h-screen overflow-hidden">
+        <>
+            {/* Barre top mobile */}
+            <div className="md:hidden sticky top-0 z-40 bg-black border-b border-gray-800 flex items-center justify-between px-4 py-3 order-1">
+                <Link to="/" className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm-7 10H7v-2h5v2zm5-4H7V8h10v2z"/>
+                    </svg>
+                    <span className="text-lg font-bold text-gray-300 tracking-widest font-display">
+                        <span className="text-xl">M</span>OVIE<span className="text-xl">DB</span>
+                    </span>
+                </Link>
+                <button
+                    onClick={() => setMobileOpen(true)}
+                    aria-label="Ouvrir le menu"
+                    className="text-gray-300 p-2"
+                >
+                    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+            {/* Overlay mobile */}
+            {mobileOpen && (
+                <div
+                    className="md:hidden fixed inset-0 bg-black/60 z-40"
+                    onClick={() => setMobileOpen(false)}
+                />
+            )}
+
+            <nav
+                className={`bg-black z-50 border-l-2 border-black
+                    md:w-2/12 md:min-h-screen md:static md:translate-x-0 md:order-2
+                    fixed top-0 right-0 h-full w-72 max-w-[85vw] transform transition-transform duration-300
+                    ${mobileOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`}
+            >
+                {/* Bouton fermer mobile */}
+                <button
+                    onClick={() => setMobileOpen(false)}
+                    aria-label="Fermer le menu"
+                    className="md:hidden absolute top-3 right-3 text-gray-400 p-2 z-10"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            <div className="sticky top-0 flex flex-col max-h-screen overflow-y-auto">
                 <Link to="/">
                     <div className="p-4 flex flex-col items-center gap-2 cursor-pointer group">
                         <svg className="w-8 h-8 text-gray-500 group-hover:text-gray-300 transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -234,6 +291,7 @@ function LateralNav() {
                 </ul>
             </div>
         </nav>
+        </>
     );
 }   
 
