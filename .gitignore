@@ -28,4 +28,6 @@ dist-ssr
 .env.*
 !.env.example
 
-seo.md
+
+/agent
+/conception/aides
