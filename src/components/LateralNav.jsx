@@ -145,7 +145,7 @@ function LateralNav() {
 
             <nav
                 className={`bg-black z-50 border-l-2 border-black
-                    md:w-2/12 md:h-screen md:sticky md:top-0 md:translate-x-0 md:order-2 md:self-start
+                    md:w-2/12 md:h-screen md:fixed md:right-0 md:top-0 md:translate-x-0 md:order-2
                     fixed top-0 right-0 h-full w-72 max-w-[85vw] transform transition-transform duration-300
                     ${mobileOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`}
             >
@@ -161,10 +161,10 @@ function LateralNav() {
                 </button>
             <div className="flex flex-col h-full overflow-y-auto">
                 <Link to="/">
-                    <div className="p-4 flex flex-col items-center gap-2 cursor-pointer group">
-                        <svg className="w-8 h-8 text-gray-500 group-hover:text-gray-300 transition-colors" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm-7 10H7v-2h5v2zm5-4H7V8h10v2z"/>
-                        </svg>
+                    <div className="p-4 flex flex-col items-center gap-3 cursor-pointer group">
+                        <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                            <span className="font-display text-6xl font-bold text-black leading-none">M</span>
+                        </div>
                         <h3 className="text-2xl font-bold text-gray-400 tracking-widest font-display underline decoration-gray-600 decoration-2 underline-offset-4 group-hover:text-gray-300 transition-colors text-center">
                             <span className="text-3xl">M</span>OVIE<span className="text-3xl">D</span><span className="text-3xl">B</span>
                         </h3>
