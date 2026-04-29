@@ -16,7 +16,7 @@ function App() {
         <Router>
             <div className="min-h-screen bg-[#f5f5f0] text-gray-900 font-serif">
                 <div className="flex flex-col md:flex-row">
-                    <main className="flex-1 min-w-0 order-2 md:order-1 md:pr-[16.6667%]">
+                    <main className="flex-1 min-w-0 order-2 md:order-1">
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/movies" element={<Movies />} />

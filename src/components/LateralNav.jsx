@@ -117,11 +117,11 @@ function LateralNav() {
             {/* Barre top mobile */}
             <div className="md:hidden sticky top-0 z-40 bg-black border-b border-gray-800 flex items-center justify-between px-4 py-3 order-1">
                 <Link to="/" className="flex items-center gap-2">
-                    <svg className="w-6 h-6 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm-7 10H7v-2h5v2zm5-4H7V8h10v2z"/>
-                    </svg>
+                    <span className="flex items-center justify-center w-9 h-9 bg-white rounded-lg shadow-md">
+                        <span className="font-display font-bold text-2xl leading-none text-black">M</span>
+                    </span>
                     <span className="text-lg font-bold text-gray-300 tracking-widest font-display">
-                        <span className="text-xl">M</span>OVIE<span className="text-xl">DB</span>
+                        OVIE<span className="text-xl">DB</span>
                     </span>
                 </Link>
                 <button
@@ -145,7 +145,7 @@ function LateralNav() {
 
             <nav
                 className={`bg-black z-50 border-l-2 border-black
-                    md:w-2/12 md:h-screen md:fixed md:right-0 md:top-0 md:translate-x-0 md:order-2
+                    md:w-2/12 md:h-screen md:sticky md:top-0 md:self-start md:translate-x-0 md:order-2
                     fixed top-0 right-0 h-full w-72 max-w-[85vw] transform transition-transform duration-300
                     ${mobileOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`}
             >
@@ -159,12 +159,12 @@ function LateralNav() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            <div className="flex flex-col h-full overflow-y-auto">
+            <div className="flex flex-col h-full max-h-screen overflow-y-auto">
                 <Link to="/">
                     <div className="p-4 flex flex-col items-center gap-3 cursor-pointer group">
-                        <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-                            <span className="font-display text-6xl font-bold text-black leading-none">M</span>
-                        </div>
+                        <span className="flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-lg group-hover:scale-105 transition-transform">
+                            <span className="font-display font-bold text-6xl leading-none text-black">M</span>
+                        </span>
                         <h3 className="text-2xl font-bold text-gray-400 tracking-widest font-display underline decoration-gray-600 decoration-2 underline-offset-4 group-hover:text-gray-300 transition-colors text-center">
                             <span className="text-3xl">M</span>OVIE<span className="text-3xl">D</span><span className="text-3xl">B</span>
                         </h3>
