@@ -3,6 +3,8 @@ name: Deploy to VPS
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
 
 jobs:
   deploy:
@@ -89,3 +91,18 @@ jobs:
 
             COMPOSE_PROJECT_NAME=kulturdb docker compose up -d --build
             docker image prune -f
+
+            echo "--- Verification des conteneurs ---"
+            docker ps
+
+            echo "--- Test reponse interne port 3003 ---"
+            curl -I http://127.0.0.1:3003 || true
+
+            echo "--- Diagnostic Nginx de l'hote ---"
+            ls -la /etc/nginx/sites-enabled/ 2>/dev/null || true
+
+            echo "--- Renouvellement Certbot et rechargement Nginx ---"
+            (sudo certbot renew --no-random-sleep-on-renew || certbot renew || true)
+            (sudo nginx -t && (sudo systemctl reload nginx || sudo service nginx reload) || true)
+
+
