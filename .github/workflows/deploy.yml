@@ -108,35 +108,34 @@ jobs:
             sudo certbot certificates || true
 
             echo "=== Configuration Nginx pour kulturdb.azim404.com ==="
-            sudo tee /etc/nginx/sites-available/kulturdb.azim404.com << 'EOF'
-server {
-    listen 80;
-    listen [::]:80;
-    server_name kulturdb.azim404.com moviedb.azim404.com;
+            printf '%s\n' \
+              'server {' \
+              '    listen 80;' \
+              '    listen [::]:80;' \
+              '    server_name kulturdb.azim404.com moviedb.azim404.com;' \
+              '    location / {' \
+              '        proxy_pass http://127.0.0.1:3003;' \
+              '        proxy_http_version 1.1;' \
+              '        proxy_set_header Upgrade $http_upgrade;' \
+              '        proxy_set_header Connection '\''upgrade'\'';' \
+              '        proxy_set_header Host $host;' \
+              '        proxy_cache_bypass $http_upgrade;' \
+              '        proxy_set_header X-Real-IP $remote_addr;' \
+              '        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;' \
+              '        proxy_set_header X-Forwarded-Proto $scheme;' \
+              '    }' \
+              '}' | sudo tee /etc/nginx/sites-available/kulturdb.azim404.com
 
-    location / {
-        proxy_pass http://127.0.0.1:3003;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-EOF
             sudo ln -sf /etc/nginx/sites-available/kulturdb.azim404.com /etc/nginx/sites-enabled/kulturdb.azim404.com
-            # Desactiver l'ancien lien moviedb s'il etait orphelin
             sudo rm -f /etc/nginx/sites-enabled/moviedb || true
-            sudo nginx -t && sudo systemctl reload nginx
+            sudo nginx -t && (sudo systemctl reload nginx || sudo service nginx reload) || true
 
             echo "=== Obtention/renouvellement du certificat SSL pour kulturdb.azim404.com et azim404.com ==="
             sudo certbot --nginx -d kulturdb.azim404.com --non-interactive --agree-tos --register-unsafely-without-email --redirect || true
             sudo certbot --nginx -d azim404.com --non-interactive --agree-tos --register-unsafely-without-email || true
 
-            sudo nginx -t && sudo systemctl reload nginx
+            sudo nginx -t && (sudo systemctl reload nginx || sudo service nginx reload) || true
+
 
 
 
