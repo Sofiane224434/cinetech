@@ -19,7 +19,7 @@ Allow: /
 Crawl-delay: 1
 
 # Localisation du plan du site
-Sitemap: https://moviedb.azim404.com/sitemap.xml
+Sitemap: https://kulturdb.azim404.com/sitemap.xml
 
 # Délai de crawl
 Crawl-delay: 1

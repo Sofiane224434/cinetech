@@ -1,6 +1,6 @@
 # KulturDB
 
-Application front KulturDB servie sur moviedb.azim404.com.
+Application front KulturDB servie sur kulturdb.azim404.com.
 
 ## Stack
 
@@ -180,7 +180,7 @@ npm run dev:api
 
 - Le conteneur expose 127.0.0.1:3003:80
 - Le frontend Nginx proxy /api vers le conteneur backend auth (api:4000)
-- Nginx sur le VPS route moviedb.azim404.com vers ce port
+- Nginx sur le VPS route kulturdb.azim404.com vers ce port
 - Le TLS est gere au niveau hote par Certbot et Nginx
 - Les build args Docker viennent du fichier .env local au repo de deploiement
 

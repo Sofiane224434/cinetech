@@ -11,7 +11,7 @@ Ce projet est deploye sur le VPS avec l'architecture reelle suivante:
 
 ## DNS
 
-Le sous-domaine attendu est moviedb.azim404.com.
+Le sous-domaine attendu est kulturdb.azim404.com.
 
 ## Secrets GitHub Actions
 
@@ -39,8 +39,8 @@ VITE_API_BASE_URL=/api
 
 AUTH_JWT_SECRET=change_me
 AUTH_SESSION_SECRET=change_me_too
-AUTH_BASE_URL=https://moviedb.azim404.com
-FRONTEND_BASE_URL=https://moviedb.azim404.com
+AUTH_BASE_URL=https://kulturdb.azim404.com
+FRONTEND_BASE_URL=https://kulturdb.azim404.com
 
 BREVO_API_KEY=
 BREVO_SENDER_EMAIL=
@@ -49,12 +49,12 @@ BREVO_SENDER_NAME=KulturDB
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 # Optionnel si non standard:
-GOOGLE_CALLBACK_URL=https://moviedb.azim404.com/api/auth/oauth/google/callback
+GOOGLE_CALLBACK_URL=https://kulturdb.azim404.com/api/auth/oauth/google/callback
 
 GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
 # Optionnel si non standard:
-GITHUB_CALLBACK_URL=https://moviedb.azim404.com/api/auth/oauth/github/callback
+GITHUB_CALLBACK_URL=https://kulturdb.azim404.com/api/auth/oauth/github/callback
 ```
 
 Notes:
@@ -92,7 +92,7 @@ COMPOSE_PROJECT_NAME=kulturdb docker compose up -d --build
 cd ~/apps/kulturdb
 docker compose ps
 docker compose logs --tail=100
-curl -I https://moviedb.azim404.com
+curl -I https://kulturdb.azim404.com
 ```
 
 ## A ne pas faire

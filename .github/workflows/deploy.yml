@@ -59,12 +59,14 @@ jobs:
               echo "AUTH_SESSION_SECRET ajoute automatiquement dans .env"
             fi
 
+            sed -i 's|moviedb.azim404.com|kulturdb.azim404.com|g' .env 2>/dev/null || true
+
             if ! grep -q '^FRONTEND_BASE_URL=' .env; then
-              echo "FRONTEND_BASE_URL=https://moviedb.azim404.com" >> .env
+              echo "FRONTEND_BASE_URL=https://kulturdb.azim404.com" >> .env
             fi
 
             if ! grep -q '^AUTH_BASE_URL=' .env; then
-              echo "AUTH_BASE_URL=https://moviedb.azim404.com" >> .env
+              echo "AUTH_BASE_URL=https://kulturdb.azim404.com" >> .env
             fi
 
             # Coupe proprement l'ancien stack cinetech si encore present apres rebrand.
